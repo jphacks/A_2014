@@ -12,6 +12,7 @@
 - github初期設定
     - `git config --global user.name "XXXX"`
     - `git config --global user.email "XXXX@hogehoge.com"`
+    - `git remote set-url origin https://{username}@github.com/jphacks/A_2014.git`
 - 開発はmasterからブランチ切る
     1. `git checkout -b ブランチの名前` (ブランチ切って移動)
         
@@ -26,8 +27,8 @@
 
     `git merge ブランチ` (開発終わってマージ)
 - 開発中は `yarn start` で http://localhost:3000/A_2014 みながら開発 
-- 完成は `yarn predeploy` -> `rm -rf node_modules/.cache` -> `yarn deploy` で反映
-- masterにcommitした内容が https://jphacks.github.io/A_2014/ に反映される
+- 完成は `yarn predeploy` -> `gh-pages-clean` -> `yarn deploy` で反映
+- gh-pagesにcommitした内容が https://jphacks.github.io/A_2014/ に反映される
 
 　　
 `git pull` で更新を頻繁にやる

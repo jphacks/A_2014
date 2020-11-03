@@ -7,7 +7,7 @@ const Page3: React.FC = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">Page1</Link>
+                        <Link to="/A_2014/">Page1</Link>
                     </li>
                 </ul>
             </nav>

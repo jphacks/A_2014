@@ -13,10 +13,10 @@ const Router: React.FC = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={Page1} />
-                <Route path="/page2" component={Page2} />
-                <Route path="/page3" component={Page3} />
-                <Route component={() => <Redirect to="/" />} />
+                <Route path="/A_2014/" exact component={Page1} />
+                <Route path="/A_2014/page2" component={Page2} />
+                <Route path="/A_2014/page3" component={Page3} />
+                <Route component={() => <Redirect to="/A_2014/" />} />
             </Switch>
         </BrowserRouter>
     );

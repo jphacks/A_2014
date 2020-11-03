@@ -9,6 +9,7 @@
     - SCSS
     - React.js
     - gh-pages -> github をそのままサイトにできるやつ
+    - react-router-dom -> page遷移用
 - github初期設定
     - `git config --global user.name "XXXX"`
     - `git config --global user.email "XXXX@hogehoge.com"`

@@ -3,10 +3,11 @@ import Button from "./component/Button";
 import Img from "./component/Img";
 import Modal from "./component/Modal";
 import Slider from "./component/Slider";
-import styles from "./Page2.scss";
+import "./Page2.scss";
 
 const Page2 = () => {
     return (
+        <div>
         <span>
             <nav>
                 <ul>
@@ -16,7 +17,22 @@ const Page2 = () => {
                 </ul>
             </nav>
             <div>Page2</div>
-        </span >
+            </span >
+            <Img
+                alt='pic'
+                src='/Users/hoshikawa/workspace/A_2014/public/assets/jap.jpg'
+            />
+             <Slider
+                name='田舎度'
+            />
+             <Button
+                name='なげる'
+            />
+            <Modal
+                name='help'
+                introduction='aaaaa'
+            />
+        </div>
     )
 }
 

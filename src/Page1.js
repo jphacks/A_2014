@@ -2,7 +2,8 @@ import { Link } from "react-router-dom";
 import Button from "./component/Button";
 import Img from "./component/Img";
 import Modal from "./component/Modal";
-import styles from "./Page1.scss";
+import "./Page1.scss";
+import logo from './assets/jap.jpg';
 
 const Page1 = () => {
     return (
@@ -17,10 +18,24 @@ const Page1 = () => {
                 </nav>
                 <div>Page1</div>
             </span >
-            <img alt='map' src='src/assets/map-japan-icon-green.png'/>
-            <button>やさしい</button>
-            <button>鬼</button>
-            <button>カスタム</button>
+            <Img
+                alt='pic'
+                src='./assets/jap.jpg'
+            />
+            <img src={logo}/>
+            <Button
+                name='やさしい'
+            />
+            <Button
+                name='おに'
+            />
+            <Button
+                name='カスタム'
+            />
+            <Modal
+                name='help'
+                introduction='aaaaa'
+            />
         </div>
     )
 }

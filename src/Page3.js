@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Button from "./component/Button";
 import Img from "./component/Img";
 import Modal from "./component/Modal";
-import styles from "./Page3.scss";
+import "./Page3.scss";
 
 const Page3 = () => {
     return (

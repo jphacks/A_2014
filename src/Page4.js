@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "./component/Button";
 import Img from "./component/Img";
-import styles from "./Page4.scss";
+import "./Page4.scss";
 
 const Page4: React.FC = () => {
     return (

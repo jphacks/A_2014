@@ -1,19 +1,18 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-const Page2: React.FC = () => {
+const Page1 = () => {
     return (
         <span>
             <nav>
                 <ul>
                     <li>
-                        <Link to="/A_2014/page3">Page3</Link>
+                        <Link to="/A_2014/page2">Page2</Link>
                     </li>
                 </ul>
             </nav>
-            <div>Page2</div>
+            <div>Page1</div>
         </span >
     )
 }
 
-export default Page2;
+export default Page1;

@@ -9,7 +9,7 @@ import {
     Redirect
 } from "react-router-dom";
 
-const Router: React.FC = () => {
+const Router = () => {
     return (
         <BrowserRouter>
             <Switch>

@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-//import Button from "../component/Button";
+import Button from "./component/Button";
+import Img from "./component/Img";
+import Modal from "./component/Modal";
+import styles from "./Page1.scss";
 
 const Page1 = () => {
     return (

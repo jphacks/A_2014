@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Page from "./component/Page";
-
+//import Button from "../component/Button";
 
 const Page1: React.FC = () => {
     return (
@@ -16,7 +15,10 @@ const Page1: React.FC = () => {
                 </nav>
                 <div>Page1</div>
             </span >
-            <Page />
+            <img alt='map' src='src/assets/map-japan-icon-green.png'/>
+            <button>やさしい</button>
+            <button>鬼</button>
+            <button>カスタム</button>
         </div>
     )
 }

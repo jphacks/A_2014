@@ -38,15 +38,16 @@ const Page2 = (props) => {
     return (
         <span className="frame">
             <Modal
-                name={<HelpIcon fontSize="small" />}
-                introduction='aaaaa'
+                style={{ position: 'relative' }}
+                name={<HelpIcon />}
+                introduction='はじめまして！僕は,つるの鶴野ヒトーシだよ。このアプリであなたの行き先を悩まずに決めちゃいましょう！まずは旅先の難易度を選んでね！'
             />
             {/*             <Img
                 alt='pic'
                 src='/Users/hoshikawa/workspace/A_2014/public/assets/jap.jpg'
             /> */}
             <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <img src={logo} style={{ width: '80%' }} />
+                <img src={logo} style={{ width: '80%', overflow: 'visible', marginBottom: 0, marginTop: '70px' }} />
                 <FormGroup>
                     {/* <Slider
                     name='田舎度'

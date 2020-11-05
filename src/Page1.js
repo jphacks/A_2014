@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 // import Button from "./component/Button";
 import Img from "./component/Img";
 import Modal from "./component/Modal";
-import logo from './assets/map_japan.png';
+import logo from './assets/main.png';
 import './App.scss';
 import Button from '@material-ui/core/Button';
-
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from '@material-ui/core/styles';
 import HelpIcon from '@material-ui/icons/Help';
@@ -30,13 +29,12 @@ const Page1 = (props) => {
             }
         });
     }
-    import "./Page1.scss";
-    import logo from './assets/main.png';
 
     return (
         <span className="frame">
             <Modal
-                name={<HelpIcon fontSize="small" />}
+                style={{ position: 'relative' }}
+                name={<HelpIcon />}
                 introduction='はじめまして！僕は,つるの鶴野ヒトーシだよ。このアプリであなたの行き先を悩まずに決めちゃいましょう！まずは旅先の難易度を選んでね！'
             />
             {/*             <Img
@@ -44,14 +42,14 @@ const Page1 = (props) => {
                 src='./assets/jap.jpg'
             /> */}
             <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <div>ツルのひと押し</div>
-                <img src={logo} style={{ width: '80%', marginBottom: 0 }} />
+                <div style={{ position: 'absolute', top: '12vh', zIndex: 97, fontSize: 'xx-large' }}>ツルのひと押し</div>
+                <img src={logo} style={{ width: '100%', overflow: 'visible', marginBottom: 0, marginTop: '70px' }} />
                 <ButtonGroup
                     orientation="vertical"
                     aria-label="vertical contained primary button group"
                     variant="text"
                     size="large"
-                    style={{ width: '50%' }}
+                    style={{ width: '50%', zIndex: 98 }}
                 >
                     <Button onClick={(event) => onClickChange(event, 0)}>しんせつ</Button>
                     <Button onClick={(event) => onClickChange(event, 1)}>おに</Button>

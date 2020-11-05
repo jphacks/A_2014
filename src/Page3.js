@@ -38,11 +38,9 @@ const Page3 = (props) => {
 
     const style = {
         map: {
-            marginTop: 0,
-            position: 'absolute',
-            top: '-15vh',
-            right: '20vw',
-            height: '100vw',
+            position: 'fixed',
+            top: '-10vh',
+            height: '90vw',
             width: '30vh',
             'WebkitTransform': 'rotate(90deg)',
             'MozTransform': 'rotate(90deg)',
@@ -53,12 +51,10 @@ const Page3 = (props) => {
             zIndex: '97'
         },
         arrow: {
-            marginBottom: 0,
             bottom: '100px',
-            left: '15vw',
-            position: 'absolute',
+            top: 'unset',
+            position: 'fixed',
             height: '20vw',
-            // backgroundColor: 'red',
             'WebkitTransform': rotate,
             'MozTransform': rotate,
             'OTransform': rotate,
@@ -120,7 +116,7 @@ const Page3 = (props) => {
             setState(1);
             const arrow = document.getElementById("arrow");
             if (arrow !== null) arrow.style.bottom = '100px';
-            if (arrow !== null) arrow.style.left = '15vw';
+            if (arrow !== null) arrow.style.left = '0vw';
             if (arrow !== null) arrow.style.transitionDuration = '0.2s';
             setLog("OK");
         } else {
@@ -152,7 +148,7 @@ const Page3 = (props) => {
             const arrow = document.getElementById("arrow");
             if (arrow !== null) arrow.style.bottom = '50vh';
             if (arrow !== null) arrow.style.transitionDuration = '0.3s';
-            if (arrow !== null) arrow.style.left = String((((Number(arrow.style.transform.split('(')[1].split('d')[0]) - max.yMin) / (max.yMax - max.yMin)) - 0.5) * 35 + 15) + 'vw';
+            if (arrow !== null) arrow.style.left = String((((Number(arrow.style.transform.split('(')[1].split('d')[0]) - max.yMin) / (max.yMax - max.yMin)) - 0.5) * 35 + 0) + 'vw';
         } else {
             setLog("NO");
         }
@@ -279,16 +275,15 @@ const Page3 = (props) => {
                     !(DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === 'function')
                 )
             ) ?
-                <Button onClick={goNext} height='10px' width='10px'>なげる</Button>
-                :
                 <Button
                     variant="contained"
                     size="large"
-                    style={{ width: '100px', height: '40px', position: 'absolute', top: '10px', right: 0, left: 'auto', zIndex: 98 }}
+                    style={{ width: '100px', height: '40px', position: 'fixed', top: '10px', right: '10px', left: 'unset', zIndex: 98 }}
                     onClick={goNext}>
                     なげる
                     </Button>
-                // <></>
+                :
+                <></>
             }
             {/* <div>
                 <span>{String(and_ver())}</span>
@@ -311,7 +306,7 @@ const Page3 = (props) => {
                 <div id="beta">0</div>
                 <div id="gamma">0</div>
             </div> */}
-            <div style={{ backgroundColor: 'rgba(4, 147, 114, 1)', overflow: 'hidden', height: '100vh', width: '100vw', top: 0, right: 0 }}>
+            <div style={{ overflow: 'hidden', height: '100vh', width: '100vw', top: 0, right: 0 }}>
                 <img src={map} style={style.map} />
                 <img alt="" id="arrow" src={Arrow} style={style.arrow} />
             </div>

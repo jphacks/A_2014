@@ -13,7 +13,7 @@ import {
   Marker,
 } from 'react-google-maps';
 
-const apiKey = "AIzaSyCvni2D9DDZ1mqoHE1c5BNz8D0f8y9lnvc";
+const apiKey = "AIzaSyAt_9izqQ3y1jBMpfJBi57QzAoTPTWmdT4";
 
 const MapWithAMakredInfoWindow = compose(
   withScriptjs,

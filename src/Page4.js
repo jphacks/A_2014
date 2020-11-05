@@ -5,6 +5,7 @@ import Img from "./component/Img";
 import "./Page4.scss";
 import TwShare from "./component/Share";
 import logo from "./assets/jap.jpg";
+import Map from "./component/Map"
 
 const Page4 = () => {
     return (
@@ -27,8 +28,7 @@ const Page4 = () => {
                     <p>"aaa"</p>
                 </div>        
                 <div className="Gmap">
-                    <script>
-                    </script>
+                    <Map location="宮城県仙台市太白区萩が丘"/>
                 </div>
             </div>
           <img alt="pic" src={logo}/>

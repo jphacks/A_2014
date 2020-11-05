@@ -12,7 +12,7 @@ const Page1 = () => {
                 <nav>
                     <ul>
                         <li>
-                            <Link to="/A_2014/page2">Page2</Link>
+                            <Link to="/A_2014/page2" >Page2</Link>
                         </li>
                     </ul>
                 </nav>

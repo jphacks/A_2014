@@ -4,7 +4,7 @@ import Button from "./component/Button";
 import Img from "./component/Img";
 import "./Page4.scss";
 
-const Page4: React.FC = () => {
+const Page4 = () => {
     return (
         <span>
             <nav>

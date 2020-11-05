@@ -3,11 +3,18 @@ import Button from "./component/Button";
 import Img from "./component/Img";
 import Modal from "./component/Modal";
 import Slider from "./component/Slider";
+import Toggle from "./component/Toggle";
+import Checkbox from "./component/Checkbox";
 import "./Page2.scss";
+import logo from './assets/map_japan.png';
 
 const Page2 = () => {
     return (
         <div>
+            <Modal
+                name='help'
+                introduction='aaaaa'
+            />
         <span>
             <nav>
                 <ul>
@@ -18,20 +25,28 @@ const Page2 = () => {
             </nav>
             <div>Page2</div>
             </span >
-            <Img
+{/*             <Img
                 alt='pic'
                 src='/Users/hoshikawa/workspace/A_2014/public/assets/jap.jpg'
-            />
-             <Slider
+            /> */}
+            <img src={logo}/>
+            <Slider
                 name='田舎度'
             />
+            <Checkbox
+                text='道の駅'
+            />
+            <Checkbox
+                text='駅'
+            />
+            <Checkbox
+                text='まち'
+            />
+
              <Button
                 name='なげる'
             />
-            <Modal
-                name='help'
-                introduction='aaaaa'
-            />
+
         </div>
     )
 }

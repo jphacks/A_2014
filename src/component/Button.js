@@ -3,9 +3,10 @@ import './Button.scss';
 
 class Button extends React.Component {
   render() {
+    
     return (
       <div>
-        <button className='push-button'>{this.props.name}</button>
+        <button className='button' href='#'>{this.props.name}</button>
       </div>
     );
   }

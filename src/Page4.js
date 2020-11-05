@@ -20,6 +20,21 @@ const Page4 = (props) => {
             <p>{props.location.state.value.filter.station !== undefined ? String(props.location.state.value.filter.station) : 'false'}</p>
             <p>{props.location.state.value.filter.city !== undefined ? String(props.location.state.value.filter.city) : 'false'}</p>
             <p>{props.location.state.value.dart !== undefined ? String(props.location.state.value.dart) : 'false'}</p>
+            <div className="container">
+                <div className="result">
+                    <h1>"今日の目的地"</h1>
+                    <h2>"結果を埋め込みたい"</h2>
+                    <div className="area-text">
+                        <p>"aaa"</p>
+                    </div>
+                    <div className="Gmap">
+                        <Map location="宮城県仙台市太白区萩が丘" />
+                    </div>
+                </div>
+                <img alt="pic" src={logo} />
+                <TwShare className="Tw_share" />
+
+            </div>
         </span >
     )
 }

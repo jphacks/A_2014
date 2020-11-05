@@ -23,7 +23,7 @@ class Modal extends React.Component{
           <div className='modal-inner'>
             <div className='modal-header'></div>
             <div className='modal-introduction'>
-              <h2>{this.props.name}</h2>
+              <h2>使い方</h2>
               <p>{this.props.introduction}</p>
             </div>
             <button
@@ -38,9 +38,9 @@ class Modal extends React.Component{
     }
 
     return (
-      <div className='lesson-card'>
+      <div className='help'>
         <div
-          className='lesson-item'
+          className='help'
           onClick={() => {this.handleClickLesson()}}
         >
           <p>{this.props.name}</p>

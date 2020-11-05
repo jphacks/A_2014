@@ -3,14 +3,14 @@ import Button from "./component/Button";
 import Img from "./component/Img";
 import Modal from "./component/Modal";
 import "./Page1.scss";
-import logo from './assets/map_japan.png';
+import logo from './assets/main.png';
 
 const Page1 = () => {
     return (
         <div>
             <Modal
                 name='help'
-                introduction='aaaaa'
+                introduction='はじめまして！僕は,つるの鶴野ヒトーシだよ。このアプリであなたの行き先を悩まずに決めちゃいましょう！まずは旅先の難易度を選んでね！'
             />
             <span>
                 <nav>
@@ -22,21 +22,14 @@ const Page1 = () => {
                 </nav>
                 <div>Page1</div>
             </span >
-{/*             <Img
-                alt='pic'
-                src='./assets/jap.jpg'
-            /> */}
+            <div>ツルのひと押し</div>
             <img src={logo}/>
             <Button
-                name='やさしい'
+                name='しんせつ'
             />
             <Button
                 name='おに'
             />
-            <Button
-                name='カスタム'
-            />
-
         </div>
     )
 }

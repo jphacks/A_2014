@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import { Link, withRouter } from "react-router-dom";
-import Button from "./component/Button";
 import Img from "./component/Img";
 import Modal from "./component/Modal";
-import "./Page3.scss";
 import Arrow from './assets/arrow.png';
-import map from './assets/map.png';
-
+import './App.scss';
+import map from './assets/map_japan.png';
+import Button from '@material-ui/core/Button';
 
 const Page3 = (props) => {
     useEffect(() => {
@@ -21,7 +20,11 @@ const Page3 = (props) => {
         props.history.push({
             pathname: '/A_2014/page4',
             state: {
-                value: value
+                value: {
+                    level: props.location.state.value.level !== undefined ? props.location.state.value.level : 1,
+                    filter: props.location.state.value.filter !== undefined ? props.location.state.value.filter : {},
+                    dart: value
+                }
             }
         });
     }
@@ -35,6 +38,7 @@ const Page3 = (props) => {
 
     const style = {
         map: {
+            marginTop: 0,
             position: 'absolute',
             top: '-15vh',
             right: '20vw',
@@ -49,6 +53,7 @@ const Page3 = (props) => {
             zIndex: '97'
         },
         arrow: {
+            marginBottom: 0,
             bottom: '100px',
             left: '15vw',
             position: 'absolute',
@@ -267,20 +272,24 @@ const Page3 = (props) => {
     }
 
     return (
-        <span>
-            <div style={{ zIndex: 98, position: 'absolute', top: '15px', right: '10px', transform: 'rotate(90deg)' }} >
-                {and_ver() === -1 && (ios_ver() !== -1 ||
-                    (
-                        !(DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') ||
-                        !(DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === 'function')
-                    )
-                ) ?
-                    <button onClick={goNext} height='10px' width='10px'>なげる</button>
-                    :
-                    <></>
-                }
-            </div>
-            <div>Page3</div>
+        <span className="frame" >
+            {and_ver() === -1 && (ios_ver() !== -1 ||
+                (
+                    !(DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') ||
+                    !(DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === 'function')
+                )
+            ) ?
+                <Button onClick={goNext} height='10px' width='10px'>なげる</Button>
+                :
+                <Button
+                    variant="contained"
+                    size="large"
+                    style={{ width: '100px', height: '40px', position: 'absolute', top: '10px', right: 0, left: 'auto', zIndex: 98 }}
+                    onClick={goNext}>
+                    なげる
+                    </Button>
+                // <></>
+            }
             {/* <div>
                 <span>{String(and_ver())}</span>
                 <span>{String(ios_ver())}</span>
@@ -302,11 +311,11 @@ const Page3 = (props) => {
                 <div id="beta">0</div>
                 <div id="gamma">0</div>
             </div> */}
-            <div style={{ backgroundColor: 'rgba(4, 147, 114, 1)', overflow: 'hidden', height: '100%', width: '100%', position: 'absolute', top: 0, right: 0 }}>
+            <div style={{ backgroundColor: 'rgba(4, 147, 114, 1)', overflow: 'hidden', height: '100vh', width: '100vw', top: 0, right: 0 }}>
                 <img src={map} style={style.map} />
                 <img alt="" id="arrow" src={Arrow} style={style.arrow} />
             </div>
-            <a href="https://www.vecteezy.com/free-vector/dart">Dart Vectors by Vecteezy</a>
+            <a href="https://www.vecteezy.com/free-vector/dart" hidden>Dart Vectors by Vecteezy</a>
         </span >
     )
 }

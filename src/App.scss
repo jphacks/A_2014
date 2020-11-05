@@ -29,6 +29,36 @@
   color: #61dafb;
 }
 
+#root{
+  margin:0;
+  padding:0;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right:  0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+html,body{
+  height: 100%;
+  width: 100%;
+}
+
+*{
+  margin:auto;
+  padding:auto;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right:  0;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

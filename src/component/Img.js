@@ -2,6 +2,7 @@ import React from 'react';
 import './Img.scss';
 
 class Img extends React.Component{
+  
   render() {
     return (
       <div>

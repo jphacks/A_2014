@@ -1,18 +1,32 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Button from "./component/Button";
 import Img from "./component/Img";
 import Modal from "./component/Modal";
 import "./Page3.scss";
 import Arrow from './assets/arrow.png';
+import map from './assets/map.png';
 
 
-const Page3 = () => {
+const Page3 = (props) => {
     useEffect(() => {
         deviceMotionRequest();
         deviceOrientationRequest();
+        setEventListener();
+        navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+
     })
 
+    const toPage = (value) => {
+        props.history.push({
+            pathname: '/A_2014/page4',
+            state: {
+                value: value
+            }
+        });
+    }
+
+    const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 
     var max = { x: 0, y: 0, z: 1000, yMax: 110, yMin: 70, xMin: 0 }
     var state = 0;
@@ -20,8 +34,22 @@ const Page3 = () => {
     var rotate = 'rotate(' + String(deg) + 'deg)';
 
     const style = {
+        map: {
+            position: 'absolute',
+            top: '-15vh',
+            right: '20vw',
+            height: '100vw',
+            width: '30vh',
+            'WebkitTransform': 'rotate(90deg)',
+            'MozTransform': 'rotate(90deg)',
+            'OTransform': 'rotate(90deg)',
+            'MsTransform': 'rotate(90deg)',
+            transform: 'rotate(90deg)',
+            filter: 'drop-shadow(-5px 10px 0px rgba(0, 0, 0, .9))',
+            zIndex: '97'
+        },
         arrow: {
-            bottom: '50px',
+            bottom: '100px',
             left: '15vw',
             position: 'absolute',
             height: '20vw',
@@ -32,8 +60,33 @@ const Page3 = () => {
             'MsTransform': rotate,
             transform: rotate,
             transitionDuration: '0.4s',
-            filter: 'drop-shadow(8px 45px 5px rgba(0, 0, 0, .8))'
+            filter: 'drop-shadow(8px 45px 5px rgba(0, 0, 0, .8))',
+            zIndex: '99'
         }
+    }
+
+    const goNext = async () => {
+        const arrow = document.getElementById("arrow");
+        if (arrow !== null) arrow.style.bottom = '50vh';
+        if (arrow !== null) arrow.style.transitionDuration = '0.3s';
+        setState(4);
+    }
+
+    const setEventListener = () => {
+        const arrow = document.getElementById("arrow");
+        arrow.addEventListener('transitionend', async () => {
+            if (state === 3) {
+                await sleep(1000);
+                setState(0);
+                var value = -1;
+                if (arrow !== null) value = parseInt(((parseInt(arrow.style.left.split('v')[0]) + 20) / 70.00) * 100);
+                toPage(value);
+            } else if (state === 4) {
+                await sleep(1000);
+                setState(0);
+                toPage(-1);
+            }
+        });
     }
 
     const setLog = (log) => {
@@ -51,7 +104,7 @@ const Page3 = () => {
 
     const getAcceleration = (event) => {
         if (!event.accelerationIncludingGravity) {
-            alert('event.accelerationIncludingGravity is null');
+            // alert('event.accelerationIncludingGravity is null');
             return;
         }
         if (state === 0 && parseInt(String(event.accelerationIncludingGravity.x)) >= 8
@@ -61,7 +114,7 @@ const Page3 = () => {
             && parseInt(String(event.accelerationIncludingGravity.z)) <= 2) {
             setState(1);
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.bottom = '50px';
+            if (arrow !== null) arrow.style.bottom = '100px';
             if (arrow !== null) arrow.style.left = '15vw';
             if (arrow !== null) arrow.style.transitionDuration = '0.2s';
             setLog("OK");
@@ -78,7 +131,7 @@ const Page3 = () => {
             setState(2);
         } else if (state === 2) {
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.bottom = String(-event.accelerationIncludingGravity.y / 3.00 * 100 + 10) + 'px';
+            if (arrow !== null) arrow.style.bottom = String(-event.accelerationIncludingGravity.y / 3.00 * 100 + 80) + 'px';
         } else {
             setLog("NO");
         }
@@ -88,10 +141,13 @@ const Page3 = () => {
             && parseInt(String(event.accelerationIncludingGravity.z)) > -2) {
             setState(3);
             setLog("OK");
+            if (navigator.vibrate) {
+                navigator.vibrate(300);
+            }
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.bottom = '68vh';
-            if (arrow !== null) arrow.style.left = String((((Number(arrow.style.transform.split('(')[1].split('d')[0]) - max.yMin) / (max.yMax - max.yMin)) - 0.5) * 35 + 15) + 'vw';
+            if (arrow !== null) arrow.style.bottom = '50vh';
             if (arrow !== null) arrow.style.transitionDuration = '0.3s';
+            if (arrow !== null) arrow.style.left = String((((Number(arrow.style.transform.split('(')[1].split('d')[0]) - max.yMin) / (max.yMax - max.yMin)) - 0.5) * 35 + 15) + 'vw';
         } else {
             setLog("NO");
         }
@@ -101,6 +157,7 @@ const Page3 = () => {
             && parseInt(String(event.accelerationIncludingGravity.y)) <= 2
             && parseInt(String(event.accelerationIncludingGravity.x)) > -2
             && parseInt(String(event.accelerationIncludingGravity.x)) <= 2) {
+
             setState(0);
             setLog("OK");
         } else {
@@ -136,10 +193,10 @@ const Page3 = () => {
 
     const getOrientation = (event) => {
         if (!event) {
-            alert('event is null');
+            // alert('event is null');
             return;
         }
-        if (state === 1 || state == 2) {
+        if (state === 1 || state === 2) {
             // const alpha = document.getElementById("alpha")
             // const beta = document.getElementById("beta")
             // const gamma = document.getElementById("gamma")
@@ -180,7 +237,7 @@ const Page3 = () => {
 
     const deviceMotionRequest = () => {
 
-        if (ios_ver() !== -1 && DeviceMotionEvent && typeof DeviceOrientationEvent.requestPermission === 'function') {
+        if (ios_ver() !== -1 && DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === 'function') {
             DeviceMotionEvent.requestPermission()
                 .then(permissionState => {
                     if (permissionState === 'granted') {
@@ -205,19 +262,24 @@ const Page3 = () => {
         } else if (and_ver() !== -1 || ios_ver() !== -1) {
             window.addEventListener("deviceorientation", getOrientation, false);
         } else {
-            alert('DeviceOrientationEvent.requestPermission is not found')
+            // alert('DeviceOrientationEvent.requestPermission is not found')
         }
     }
 
     return (
         <span>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/A_2014/page4">Page4</Link>
-                    </li>
-                </ul>
-            </nav>
+            <div style={{ zIndex: 98, position: 'absolute', top: '15px', right: '10px', transform: 'rotate(90deg)' }} >
+                {and_ver() === -1 && (ios_ver() !== -1 ||
+                    (
+                        !(DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === 'function') ||
+                        !(DeviceMotionEvent && typeof DeviceMotionEvent.requestPermission === 'function')
+                    )
+                ) ?
+                    <button onClick={goNext} height='10px' width='10px'>なげる</button>
+                    :
+                    <></>
+                }
+            </div>
             <div>Page3</div>
             {/* <div>
                 <span>{String(and_ver())}</span>
@@ -240,7 +302,8 @@ const Page3 = () => {
                 <div id="beta">0</div>
                 <div id="gamma">0</div>
             </div> */}
-            <div style={{ position: 'absolute', bottom: 0, width: '100%', height: '10%', padding: 'auto', margin: 'auto' }} >
+            <div style={{ backgroundColor: 'rgba(4, 147, 114, 1)', overflow: 'hidden', height: '100%', width: '100%', position: 'absolute', top: 0, right: 0 }}>
+                <img src={map} style={style.map} />
                 <img alt="" id="arrow" src={Arrow} style={style.arrow} />
             </div>
             <a href="https://www.vecteezy.com/free-vector/dart">Dart Vectors by Vecteezy</a>
@@ -248,4 +311,4 @@ const Page3 = () => {
     )
 }
 
-export default Page3;
+export default withRouter(Page3);

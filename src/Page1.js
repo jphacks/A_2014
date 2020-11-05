@@ -3,11 +3,15 @@ import Button from "./component/Button";
 import Img from "./component/Img";
 import Modal from "./component/Modal";
 import "./Page1.scss";
-import logo from './assets/jap.jpg';
+import logo from './assets/map_japan.png';
 
 const Page1 = () => {
     return (
         <div>
+            <Modal
+                name='help'
+                introduction='aaaaa'
+            />
             <span>
                 <nav>
                     <ul>
@@ -18,10 +22,10 @@ const Page1 = () => {
                 </nav>
                 <div>Page1</div>
             </span >
-            <Img
+{/*             <Img
                 alt='pic'
                 src='./assets/jap.jpg'
-            />
+            /> */}
             <img src={logo}/>
             <Button
                 name='やさしい'
@@ -32,10 +36,7 @@ const Page1 = () => {
             <Button
                 name='カスタム'
             />
-            <Modal
-                name='help'
-                introduction='aaaaa'
-            />
+
         </div>
     )
 }

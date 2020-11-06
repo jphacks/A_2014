@@ -1,5 +1,28 @@
 .modal {
-  z-index: 1;
-  position: fixed;
+  z-index: 99;
   background: white;
+  height: 100vh;
+  position: fixed;
+
+  .modal-inner{
+    width: 100%;
+    overflow: hidden;
+    height: 100vh;
+    padding-top: 150px;
+    padding-bottom: 50px;
+  }
+  
+  .modal-header{
+    font-size: larger;
+    margin: 20px auto;
+  }
+
+  .modal-introduction{
+    line-height: 3em;
+    margin: 10px 30px;
+  }
+
+  .modal-close-btn{
+    margin-top: 40px;
+  }
 }

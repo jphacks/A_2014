@@ -9,6 +9,7 @@ import {
     Route,
     Redirect
 } from "react-router-dom";
+import './App.scss';
 
 const Router = () => {
     return (

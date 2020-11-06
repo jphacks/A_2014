@@ -1,18 +1,19 @@
 import React from 'react';
 import './Modal.scss';
+import Button from '@material-ui/core/Button';
 
-class Modal extends React.Component{
+class Modal extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {isModalOpen: false};
+    this.state = { isModalOpen: false };
   }
 
   handleClickLesson() {
-    this.setState({isModalOpen: true});
+    this.setState({ isModalOpen: true });
   }
-  
+
   handleClickClose() {
-    this.setState({isModalOpen: false});
+    this.setState({ isModalOpen: false });
   }
 
   render() {
@@ -21,17 +22,16 @@ class Modal extends React.Component{
       modal = (
         <div className='modal'>
           <div className='modal-inner'>
-            <div className='modal-header'></div>
+            <div className='modal-header'>使い方</div>
             <div className='modal-introduction'>
-              <h2>使い方</h2>
-              <p>{this.props.introduction}</p>
+              {this.props.introduction}
             </div>
-            <button
+            <Button
               className='modal-close-btn'
-              onClick={() => {this.handleClickClose()}}
+              onClick={() => { this.handleClickClose() }}
             >
               とじる
-            </button>
+            </Button>
           </div>
         </div>
       );
@@ -41,9 +41,9 @@ class Modal extends React.Component{
       <div className='help'>
         <div
           className='help'
-          onClick={() => {this.handleClickLesson()}}
+          onClick={() => { this.handleClickLesson() }}
         >
-          <p>{this.props.name}</p>
+          <div>{this.props.name}</div>
         </div>
         {modal}
       </div>

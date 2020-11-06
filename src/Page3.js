@@ -67,10 +67,10 @@ const Page3 = (props) => {
             zIndex: '97'
         },
         arrow: {
-            left: '15vw',
-            top: '70vh',
+            left: '35vw',
+            top: '85vh',
             position: 'fixed',
-            height: '20vw',
+            height: '10vw',
             'WebkitTransform': rotate,
             'MozTransform': rotate,
             'OTransform': rotate,
@@ -84,7 +84,7 @@ const Page3 = (props) => {
 
     const goNext = async () => {
         const arrow = document.getElementById("arrow");
-        if (arrow !== null) arrow.style.top = '26vh';
+        if (arrow !== null) arrow.style.top = '20vh';
         if (arrow !== null) arrow.style.transitionDuration = '0.3s';
         setState(4);
     }
@@ -131,8 +131,8 @@ const Page3 = (props) => {
             && parseInt(String(event.accelerationIncludingGravity.z)) <= 2) {
             setState(1);
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.top = '70vh';
-            if (arrow !== null) arrow.style.left = '15vw';
+            if (arrow !== null) arrow.style.top = '85vh';
+            if (arrow !== null) arrow.style.left = '35vw';
             if (arrow !== null) arrow.style.transitionDuration = '0.2s';
             setLog("OK");
         } else {
@@ -144,11 +144,11 @@ const Page3 = (props) => {
             && parseInt(String(event.accelerationIncludingGravity.z)) <= 8) {
             setLog("OK");
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.top = '80vh';
+            if (arrow !== null) arrow.style.top = '95vh';
             setState(2);
         } else if (state === 2) {
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.top = String(event.accelerationIncludingGravity.y / 3.00 * 10 + 70) + 'vh';
+            if (arrow !== null) arrow.style.top = String(event.accelerationIncludingGravity.y / 3.00 * 10 + 85) + 'vh';
         } else {
             setLog("NO");
         }
@@ -162,9 +162,9 @@ const Page3 = (props) => {
                 navigator.vibrate(60);
             }
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.top = '26vh';
+            if (arrow !== null) arrow.style.top = '20vh';
             if (arrow !== null) arrow.style.transitionDuration = '0.3s';
-            if (arrow !== null) arrow.style.left = String((((Number(arrow.style.transform.split('(')[1].split('d')[0]) - max.yMin) / (max.yMax - max.yMin)) - 0.5) * 35 + 15) + 'vw';
+            if (arrow !== null) arrow.style.left = String((((Number(arrow.style.transform.split('(')[1].split('d')[0]) - max.yMin) / (max.yMax - max.yMin)) - 0.5) * 35 + 35) + 'vw';
         } else {
             setLog("NO");
         }

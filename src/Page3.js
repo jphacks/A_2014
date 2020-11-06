@@ -54,10 +54,10 @@ const Page3 = (props) => {
         },
         map2: {
             position: 'fixed',
-            top: '-10vh',
+            top: '-70px',
             left: '30vw',
-            height: '60vw',
-            width: '20%',
+            height: '200px',
+            width: '100px',
             'WebkitTransform': 'rotate(90deg)',
             'MozTransform': 'rotate(90deg)',
             'OTransform': 'rotate(90deg)',
@@ -68,7 +68,7 @@ const Page3 = (props) => {
         },
         arrow: {
             left: '35vw',
-            top: '70vh',
+            top: '80vh',
             position: 'fixed',
             height: '10vw',
             'WebkitTransform': rotate,
@@ -84,7 +84,7 @@ const Page3 = (props) => {
 
     const goNext = async () => {
         const arrow = document.getElementById("arrow");
-        if (arrow !== null) arrow.style.top = '20vh';
+        if (arrow !== null) arrow.style.top = '155px';
         if (arrow !== null) arrow.style.transitionDuration = '0.3s';
         setState(4);
     }
@@ -131,7 +131,7 @@ const Page3 = (props) => {
             && parseInt(String(event.accelerationIncludingGravity.z)) <= 2) {
             setState(1);
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.top = '70vh';
+            if (arrow !== null) arrow.style.top = '80vh';
             if (arrow !== null) arrow.style.left = '35vw';
             if (arrow !== null) arrow.style.transitionDuration = '0.2s';
             setLog("OK");
@@ -144,7 +144,7 @@ const Page3 = (props) => {
             && parseInt(String(event.accelerationIncludingGravity.z)) <= 8) {
             setLog("OK");
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.top = '80vh';
+            if (arrow !== null) arrow.style.top = '90vh';
             setState(2);
         } else if (state === 2) {
             const arrow = document.getElementById("arrow");
@@ -162,7 +162,7 @@ const Page3 = (props) => {
                 navigator.vibrate(60);
             }
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.top = '20vh';
+            if (arrow !== null) arrow.style.top = '155px';
             if (arrow !== null) arrow.style.transitionDuration = '0.3s';
             if (arrow !== null) arrow.style.left = String((((Number(arrow.style.transform.split('(')[1].split('d')[0]) - max.yMin) / (max.yMax - max.yMin)) - 0.5) * 35 + 35) + 'vw';
         } else {
@@ -302,12 +302,19 @@ const Page3 = (props) => {
                 :
                 <></>
             }
-            <span style={{ position: 'fixed', left: '10vw', top: '5vh', height: '10vh', width: '80vw', backgroundColor: '#EEEEEE', filter: 'drop-shadow(-5px -1vh 0px rgba(0, 0, 0, .9))', zIndex: 96, overflow: 'hidden' }} >
+            <span style={{
+                position: 'fixed', left: '10vw', top: '40px', height: '80px', width: '80vw',
+                backgroundColor: '#EEEEEE', filter: 'drop-shadow(-5px -6px 0px rgba(0, 0, 0, .9))',
+                zIndex: 96, overflow: 'hidden'
+            }} >
                 <img src={map} style={style.map2} />
             </span>
-            <span style={{ position: 'fixed', height: '14vh', width: '100vw', backgroundColor: '#D2B48C' }} >
+            <span style={{ position: 'fixed', height: '114px', width: '100vw', backgroundColor: '#D2B48C' }} >
             </span>
-            <div style={{ overflow: 'hidden', height: '100vh', width: '100vw', top: 0, right: 0, textAlign: 'center', verticalAlign: 'middle', backgroundColor: '#DDDDDD' }}>
+            <div style={{
+                overflow: 'hidden', height: '100vh', width: '100vw', top: 0, right: 0,
+                textAlign: 'center', verticalAlign: 'middle', backgroundColor: '#DDDDDD'
+            }}>
                 <img src={map} style={style.map} />
                 <img alt="" id="arrow" src={Arrow} style={style.arrow} />
             </div>

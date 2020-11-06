@@ -40,7 +40,7 @@ const Page2 = (props) => {
         <span className="frame">
             <Modal
                 style={{ position: 'fixed' }}
-                name={<IconButton ><HelpRoundedIIcon color="primary" /></IconButton>}
+                name={<IconButton ><HelpRoundedIIcon fontSize="large" color="primary" /></IconButton>}
                 introduction='はじめまして！僕は,つるの鶴野ヒトーシだよ。このアプリであなたの行き先を悩まずに決めちゃいましょう！まずは旅先の難易度を選んでね！'
             />
             {/*             <Img
@@ -48,8 +48,12 @@ const Page2 = (props) => {
                 src='/Users/hoshikawa/workspace/A_2014/public/assets/jap.jpg'
             /> */}
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-                <img src={logo} style={{ width: '70%', marginTop: '10vh' }} />
-                <FormGroup style={{ marginTop: '5vh', marginBottom: '5vh' }}>
+                <img src={logo} style={{
+                    width: '70%', marginTop: '5vh',
+                    filter: 'drop-shadow(3px 5px 0px rgba(0, 0, 0, 0.9))'
+                }} />
+                <div style={{ marginTop: '5vh' }}>どこを目的地にしますか？</div>
+                <FormGroup style={{ marginTop: '2vh', marginBottom: '5vh' }}>
                     {/* <Slider
                     name='田舎度'
                 /> */}

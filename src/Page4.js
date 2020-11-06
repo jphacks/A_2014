@@ -19,13 +19,12 @@ const useStyles = makeStyles((theme) => ({
     gridRoot: {
         justifyContent: 'space-around',
         overflow: 'scroll',
-        backgroundColor: theme.palette.background.paper,
-        margin: '15px 0',
+        margin: ' 0'
     },
     grid: {
-        margin: '10px 0',
+        margin: '5px 0 15px',
         justifyContent: 'space-around',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     root: {
         maxWidth: '90vw',
@@ -53,11 +52,11 @@ const Page4 = (props) => {
         <span className="frame">
             <IconButton >
                 <Link to="/A_2014/page1"
-                    style={{ position: 'fixed', top: '10px', left: '10px', right: 'unset' }}
+                    style={{ position: 'fixed', top: '18px', left: '10px', right: 'unset' }}
                 ><ArrowBackRoundedIcon fontSize="large" style={{ color: "gray" }} /></Link>
             </IconButton>
             <Grid container className={classes.gridRoot}>
-                <Grid item xs={12} className={classes.grid}>
+                <Grid item xs={12} className={classes.grid} style={{ fontWeight: 600, fontSize: '1em' }}>
                     今日の目的地
                 </Grid>
                 <Grid item xs={12} className={classes.grid}>

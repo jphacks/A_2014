@@ -21,7 +21,8 @@ import CardActions from '@material-ui/core/CardActions';
 import MapRoundedIcon from '@material-ui/icons/Map';
 import IconButton from '@material-ui/core/IconButton';
 
-const apiKey = "AIzaSyAt_9izqQ3y1jBMpfJBi57QzAoTPTWmdT4";
+// add key
+const apiKey = "";
 
 const MapWithAMakredInfoWindow = compose(
   withScriptjs,

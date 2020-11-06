@@ -13,7 +13,6 @@ const Page3 = (props) => {
         deviceOrientationRequest();
         setEventListener();
         navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
-
     })
 
     const toPage = (value) => {

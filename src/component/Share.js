@@ -8,7 +8,6 @@ import {
 } from 'react-share'
 
 const Tw_share = (props) => {
-  console.log(props)
   return (
     <div id="share_button">
       {props.location ?

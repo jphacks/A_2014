@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import './App.scss';
@@ -35,8 +35,21 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
+
 const Page4 = (props) => {
+    const [city, setCity] = useState("");
+    const [prefCode, setPrefCode] = useState(0);
+    const [location, setLocation] = useState("");
+    const url = "https://opendata.resas-portal.go.jp/"
+    // add key
+    var key = "";
+
     const classes = useStyles();
+
+    useEffect(() => {
+        if (city === "" && prefCode === 0) getData(url, key);
+    })
 
     const result = () => {
         // props.location.state.value.level
@@ -47,15 +60,9 @@ const Page4 = (props) => {
         return "宮城県仙台市太白区萩が丘";
     }
 
-    var location = test();
-
-    const test = () => {
-
-
+    const getData = (url, key) => {
         // APIキー
-        var key = "ZGUU4HOyL9KDETFUh8lX7lzxQDz9EAdB2W3CNSu0";
         // エンドポイント
-        var url = "https://opendata.resas-portal.go.jp/"
         url += "api/v1/cities";
         var request = new XMLHttpRequest();
         request.open('GET', url, true);
@@ -63,32 +70,33 @@ const Page4 = (props) => {
         // APIリクエストヘッダー
         request.setRequestHeader("Content-Type", "application/json");
         request.setRequestHeader("X-API-KEY", key);
-        var City
-        var prefCode
+
         request.onload = function () {
             let data = this.response;
-            var rand = Math.floor(Math.random() * data.result.length);//配列添え字乱数
             console.log(data);
-            console.log(data.result.length);
-            console.log(rand);
-            City = data.result[rand].cityName;
-            prefCode = data.result[rand].prefCode;
-            document.getElementById("result").innerText = City;
-
-        };
+            var rand = Math.floor(Math.random() * data.result.length);//配列添え字乱数
+            setCity(data.result[rand].cityName)
+            setPrefCode(data.result[rand].prefCode)
+            setLocation(plus(data.result[rand].cityName, data.result[rand].prefCode));
+        }
         request.send();
+    }
 
+    const plus = (City, code) => {
         //prefをとりだすよ
         const prefList = {
             1: "北海道",
             2: "青森"
         };
+
         var Pref = prefList[1];
-        var ADDR = Pref + City
+        var ADDR = String(Pref + City);
+
+        // var Pref = prefList[code] ? prefList[code] : prefList[1];
+        // var ADDR = prefList[code] ? String(Pref + City) : "北海道札幌市";
 
         return ADDR
     }
-
 
     return (
         <span className="frame">
@@ -106,7 +114,7 @@ const Page4 = (props) => {
                         <CardHeader
                             className="result-title"
                             title={location}
-                            subheader="宮城県仙台市"
+                            subheader={location}
                         />
                         <CardMedia
                             className={classes.media}
@@ -115,7 +123,7 @@ const Page4 = (props) => {
                         />
                         <CardContent>
                             <Typography className="area-text" variant="body2" color="textSecondary" component="p">
-                                景色がきれいな宮城県仙台市の町です
+                                景色がきれいな{location}の町です
                             </Typography>
                         </CardContent>
                         <CardActions style={{ justifyContent: 'center' }} disableSpacing>

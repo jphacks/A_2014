@@ -48,6 +48,7 @@ const Page4 = (props) => {
 
     useEffect(() => {
         if (location === "" && count === 0) getData(url, key);
+        else { count = 2 }
     })
 
     const result = () => {
@@ -148,7 +149,7 @@ const Page4 = (props) => {
                 ><ArrowBackRoundedIcon fontSize="large" style={{ color: "gray" }} /></Link>
             </IconButton>
             <Grid container className={classes.gridRoot}>
-                {location !== "" ? <>
+                {location !== "" && count !== 2 ? <>
                     <Grid item xs={12} className={classes.grid} style={{ fontWeight: 600, fontSize: '1em' }}>
                         今日の目的地
                 </Grid>

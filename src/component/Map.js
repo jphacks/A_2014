@@ -76,7 +76,7 @@ const Map = compose(
     <>
       <CardHeader
         title="`ここへいく`"
-        style={{ color: 'gray' }}
+        style={{ color: 'gray', fontWeight: 600 }}
       />
       <CardMedia>
         <MapWithAMakredInfoWindow

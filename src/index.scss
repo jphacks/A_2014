@@ -5,6 +5,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  // background-color: #EEEEEE;
+  background: transparent center / 500px;
+  mix-blend-mode: hard-light;
+	background-blend-mode: hard-light;
+  background-image: url(./assets/texture.jpg);
 }
 
 code {

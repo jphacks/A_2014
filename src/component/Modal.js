@@ -20,15 +20,18 @@ class Modal extends React.Component {
     let modal;
     if (this.state.isModalOpen) {
       modal = (
-        <div className='modal'>
+        <div className='modal' style={{
+          textAlign: 'center'
+        }}>
           <div className='modal-inner'>
-            <div className='modal-header'>使い方</div>
+            <div className='modal-header' style={{ fontWeight: 600 }}>使い方</div>
             <div className='modal-introduction'>
               {this.props.introduction}
             </div>
             <Button
               className='modal-close-btn'
               onClick={() => { this.handleClickClose() }}
+              style={{ fontWeight: 600, color: 'gray' }}
             >
               とじる
             </Button>
@@ -42,8 +45,13 @@ class Modal extends React.Component {
         <div
           className='help'
           onClick={() => { this.handleClickLesson() }}
+          style={{
+            width: '100%'
+          }}
         >
-          <div>{this.props.name}</div>
+          <div style={{
+            textAlign: 'center'
+          }}>{this.props.name}</div>
         </div>
         {modal}
       </div>

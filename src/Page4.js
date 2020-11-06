@@ -47,7 +47,49 @@ const Page4 = (props) => {
         return "宮城県仙台市太白区萩が丘";
     }
 
-    var location = result();
+    var location = test();
+
+    const test = () => {
+
+
+        // APIキー
+        var key = "ZGUU4HOyL9KDETFUh8lX7lzxQDz9EAdB2W3CNSu0";
+        // エンドポイント
+        var url = "https://opendata.resas-portal.go.jp/"
+        url += "api/v1/cities";
+        var request = new XMLHttpRequest();
+        request.open('GET', url, true);
+        request.responseType = 'json';
+        // APIリクエストヘッダー
+        request.setRequestHeader("Content-Type", "application/json");
+        request.setRequestHeader("X-API-KEY", key);
+        var City
+        var prefCode
+        request.onload = function () {
+            let data = this.response;
+            var rand = Math.floor(Math.random() * data.result.length);//配列添え字乱数
+            console.log(data);
+            console.log(data.result.length);
+            console.log(rand);
+            City = data.result[rand].cityName;
+            prefCode = data.result[rand].prefCode;
+            document.getElementById("result").innerText = City;
+
+        };
+        request.send();
+
+        //prefをとりだすよ
+        const prefList = {
+            1: "北海道",
+            2: "青森"
+        };
+        var Pref = prefList[1];
+        var ADDR = Pref + City
+
+        return ADDR
+    }
+
+
     return (
         <span className="frame">
             <IconButton >

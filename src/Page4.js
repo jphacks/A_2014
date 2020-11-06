@@ -74,7 +74,7 @@ const Page4 = (props) => {
                         />
                         <CardContent>
                             <Typography className="area-text" variant="body2" color="textSecondary" component="p">
-                                "景色がきれいな宮城県仙台市の町です"
+                                景色がきれいな宮城県仙台市の町です
                             </Typography>
                         </CardContent>
                         <CardActions style={{ justifyContent: 'center' }} disableSpacing>

@@ -13,6 +13,15 @@ import {
   Marker,
 } from 'react-google-maps';
 
+import './Map.scss';
+import { makeStyles } from '@material-ui/core/styles';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardActions from '@material-ui/core/CardActions';
+import MapRoundedIcon from '@material-ui/icons/Map';
+import IconButton from '@material-ui/core/IconButton';
+
+// add key
 const apiKey = "";
 
 const MapWithAMakredInfoWindow = compose(
@@ -22,13 +31,13 @@ const MapWithAMakredInfoWindow = compose(
   lat,
   lng,
 }) => (
-  <GoogleMap
-    defaultZoom={15}
-    defaultCenter={{ lat, lng }}
-  >
-    <Marker position={{ lat, lng }} />
-  </GoogleMap>
-));
+    <GoogleMap
+      defaultZoom={15}
+      defaultCenter={{ lat, lng }}
+    >
+      <Marker position={{ lat, lng }} />
+    </GoogleMap>
+  ));
 
 const Map = compose(
   withState('geocode', 'setGeocode', { lat: 0, lng: 0 }),
@@ -63,21 +72,31 @@ const Map = compose(
       </div>
     );
   }
+
   return (
-    <div className="access-map-wrapper">
-      <MapWithAMakredInfoWindow
-        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`}
-        loadingElement={<div style={{ height: '100%' }} />}
-        containerElement={<div style={{ height: '30vmax' }} />}
-        mapElement={<div style={{ height: '100%' }} />}
-        lat={lat}
-        lng={lng}
-        location={location}
+    <>
+      <CardHeader
+        title="`ここへいく`"
+        style={{ color: 'gray', fontWeight: 600 }}
       />
-      <a href={`comgooglemaps://?daddr=${lat},${lng}`}>
-        Googlemap アプリで開く
-      </a>
-    </div>
+      <CardMedia>
+        <MapWithAMakredInfoWindow
+          googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`}
+          loadingElement={<div style={{ height: '200px', width: '100%' }} />}
+          containerElement={<div style={{ height: '200px', width: '100%', zIndex: 98 }} />}
+          mapElement={<div style={{ height: '200px', width: '100%', zIndex: 99 }} />}
+          lat={lat}
+          lng={lng}
+          location={location}
+          className="map"
+        />
+      </CardMedia>
+      <CardActions style={{ justifyContent: 'center' }} disableSpacing>
+        <IconButton href={`https://www.google.com/maps/search/?api=1&query=${location}`} >
+          <MapRoundedIcon />
+        </IconButton>
+      </CardActions>
+    </>
   );
 });
 

@@ -13,7 +13,6 @@ const Page3 = (props) => {
         deviceOrientationRequest();
         setEventListener();
         navigator.vibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
-
     })
 
     const toPage = (value) => {
@@ -31,7 +30,7 @@ const Page3 = (props) => {
 
     const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 
-    var max = { x: 0, y: 0, z: 1000, yMax: 110, yMin: 70, xMin: 0 }
+    var max = { x: 0, y: 0, z: 1000, yMax: 100, yMin: 80, xMin: 0 }
     var state = 0;
     var deg = 90
     var rotate = 'rotate(' + String(deg) + 'deg)';
@@ -39,22 +38,38 @@ const Page3 = (props) => {
     const style = {
         map: {
             position: 'fixed',
-            top: '-10vh',
-            height: '90vw',
-            width: '30vh',
+            top: '35vh',
+            left: '10vw',
+            // height: '90vw',
+            width: '80%',
             'WebkitTransform': 'rotate(90deg)',
             'MozTransform': 'rotate(90deg)',
             'OTransform': 'rotate(90deg)',
             'MsTransform': 'rotate(90deg)',
             transform: 'rotate(90deg)',
-            filter: 'drop-shadow(-5px 10px 0px rgba(0, 0, 0, .9))',
+            // filter: 'drop-shadow(-5px 10px 0px rgba(0, 0, 0, .9))',
+            zIndex: '96',
+            filter: 'brightness(80%)'
+        },
+        map2: {
+            position: 'fixed',
+            top: '-70px',
+            left: '30vw',
+            height: '200px',
+            width: '100px',
+            'WebkitTransform': 'rotate(90deg)',
+            'MozTransform': 'rotate(90deg)',
+            'OTransform': 'rotate(90deg)',
+            'MsTransform': 'rotate(90deg)',
+            transform: 'rotate(90deg)',
+            // filter: 'drop-shadow(-5px 10px 0px rgba(0, 0, 0, .9))',
             zIndex: '97'
         },
         arrow: {
-            bottom: '100px',
-            top: 'unset',
+            left: '35vw',
+            top: '80vh',
             position: 'fixed',
-            height: '20vw',
+            height: '10vw',
             'WebkitTransform': rotate,
             'MozTransform': rotate,
             'OTransform': rotate,
@@ -68,7 +83,7 @@ const Page3 = (props) => {
 
     const goNext = async () => {
         const arrow = document.getElementById("arrow");
-        if (arrow !== null) arrow.style.bottom = '50vh';
+        if (arrow !== null) arrow.style.top = '155px';
         if (arrow !== null) arrow.style.transitionDuration = '0.3s';
         setState(4);
     }
@@ -115,8 +130,8 @@ const Page3 = (props) => {
             && parseInt(String(event.accelerationIncludingGravity.z)) <= 2) {
             setState(1);
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.bottom = '100px';
-            if (arrow !== null) arrow.style.left = '0vw';
+            if (arrow !== null) arrow.style.top = '80vh';
+            if (arrow !== null) arrow.style.left = '35vw';
             if (arrow !== null) arrow.style.transitionDuration = '0.2s';
             setLog("OK");
         } else {
@@ -128,11 +143,11 @@ const Page3 = (props) => {
             && parseInt(String(event.accelerationIncludingGravity.z)) <= 8) {
             setLog("OK");
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.bottom = '-10px';
+            if (arrow !== null) arrow.style.top = '90vh';
             setState(2);
         } else if (state === 2) {
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.bottom = String(-event.accelerationIncludingGravity.y / 3.00 * 100 + 80) + 'px';
+            if (arrow !== null) arrow.style.top = String(event.accelerationIncludingGravity.y / 3.00 * 10 + 70) + 'vh';
         } else {
             setLog("NO");
         }
@@ -143,12 +158,12 @@ const Page3 = (props) => {
             setState(3);
             setLog("OK");
             if (navigator.vibrate) {
-                navigator.vibrate(300);
+                navigator.vibrate(60);
             }
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.bottom = '50vh';
+            if (arrow !== null) arrow.style.top = '155px';
             if (arrow !== null) arrow.style.transitionDuration = '0.3s';
-            if (arrow !== null) arrow.style.left = String((((Number(arrow.style.transform.split('(')[1].split('d')[0]) - max.yMin) / (max.yMax - max.yMin)) - 0.5) * 35 + 0) + 'vw';
+            if (arrow !== null) arrow.style.left = String((((Number(arrow.style.transform.split('(')[1].split('d')[0]) - max.yMin) / (max.yMax - max.yMin)) - 0.5) * 35 + 35) + 'vw';
         } else {
             setLog("NO");
         }
@@ -218,7 +233,7 @@ const Page3 = (props) => {
     const ios_ver = () => {
         var ios_ua = navigator.userAgent;
         if (ios_ua.indexOf("iPhone") >= 0) {
-            console.log(ios_ua.match(/iPhone OS (\w+){1,3}/g));
+            // console.log(ios_ua.match(/iPhone OS (\w+){1,3}/g));
             var version = (RegExp.$1.replace(/_/g, '') + '00').slice(0, 3);
             return Number(version);
         } else {
@@ -244,6 +259,7 @@ const Page3 = (props) => {
                     if (permissionState === 'granted') {
                         window.addEventListener("devicemotion", getAcceleration, false)
                     }
+                    alert("ok");
                 }).catch(console.error);
         } else if (and_ver() !== -1 || ios_ver() !== -1) {
             window.addEventListener("devicemotion", getAcceleration, false);
@@ -285,28 +301,19 @@ const Page3 = (props) => {
                 :
                 <></>
             }
-            {/* <div>
-                <span>{String(and_ver())}</span>
-                <span>{String(ios_ver())}</span>
-            </div>
-            <div id="log">NO</div>
-            <div id="state">0</div>
-            <div>
-                <div id="x">0</div>
-                <div id="y">0</div>
-                <div id="z">0</div>
-            </div>
-            <div>
-                <div id="maxx">0</div>
-                <div id="maxy">0</div>
-                <div id="maxz">0</div>
-            </div>
-            <div>
-                <div id="alpha">0</div>
-                <div id="beta">0</div>
-                <div id="gamma">0</div>
-            </div> */}
-            <div style={{ overflow: 'hidden', height: '100vh', width: '100vw', top: 0, right: 0 }}>
+            <span style={{
+                position: 'fixed', left: '10vw', top: '40px', height: '80px', width: '80vw',
+                backgroundColor: '#EEEEEE', filter: 'drop-shadow(-5px -6px 0px rgba(0, 0, 0, .9))',
+                zIndex: 96, overflow: 'hidden'
+            }} >
+                <img src={map} style={style.map2} />
+            </span>
+            <span style={{ position: 'fixed', height: '114px', width: '100vw', backgroundColor: '#D2B48C' }} >
+            </span>
+            <div style={{
+                overflow: 'hidden', height: '100vh', width: '100vw', top: 0, right: 0,
+                textAlign: 'center', verticalAlign: 'middle', backgroundColor: '#DDDDDD'
+            }}>
                 <img src={map} style={style.map} />
                 <img alt="" id="arrow" src={Arrow} style={style.arrow} />
             </div>

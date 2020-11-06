@@ -47,7 +47,7 @@ const Page4 = (props) => {
     const classes = useStyles();
 
     useEffect(() => {
-        if (location === "" && count == 0) getData(url, key);
+        if (location === "" && count === 0) getData(url, key);
     })
 
     const result = () => {
@@ -73,7 +73,6 @@ const Page4 = (props) => {
 
         request.onload = function () {
             let data = this.response;
-            console.log(data);
             var rand = Math.floor(Math.random() * data.result.length);//配列添え字乱数
             setLocation(plus(data.result[rand].cityName, data.result[rand].prefCode));
         }

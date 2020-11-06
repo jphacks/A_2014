@@ -65,7 +65,7 @@ const Page4 = (props) => {
                         <CardHeader
                             className="result-title"
                             title={location}
-                            subheader="サブタイトル"
+                            subheader="宮城県仙台市"
                         />
                         <CardMedia
                             className={classes.media}
@@ -74,7 +74,7 @@ const Page4 = (props) => {
                         />
                         <CardContent>
                             <Typography className="area-text" variant="body2" color="textSecondary" component="p">
-                                "aaa"
+                                "景色がきれいな宮城県仙台市の町です"
                             </Typography>
                         </CardContent>
                         <CardActions style={{ justifyContent: 'center' }} disableSpacing>

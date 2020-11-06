@@ -42,13 +42,12 @@ const Page4 = (props) => {
     const url = "https://opendata.resas-portal.go.jp/"
     var count = 0;
     // add key
-    var key = "";
+    var key = "ZGUU4HOyL9KDETFUh8lX7lzxQDz9EAdB2W3CNSu0";
 
     const classes = useStyles();
 
     useEffect(() => {
         if (location === "" && count === 0) getData(url, key);
-        else { count = 2 }
     })
 
     const result = () => {
@@ -149,7 +148,7 @@ const Page4 = (props) => {
                 ><ArrowBackRoundedIcon fontSize="large" style={{ color: "gray" }} /></Link>
             </IconButton>
             <Grid container className={classes.gridRoot}>
-                {location !== "" && count !== 2 ? <>
+                {location !== "" ? <>
                     <Grid item xs={12} className={classes.grid} style={{ fontWeight: 600, fontSize: '1em' }}>
                         今日の目的地
                 </Grid>

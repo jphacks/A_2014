@@ -29,7 +29,7 @@ const Page2 = (props) => {
             pathname: '/A_2014/page3',
             state: {
                 value: {
-                    level: props.location.state.value.level !== undefined ? props.location.state.value.level : 1,
+                    level: props.location.state !== undefined ? props.location.state.value.level !== undefined ? props.location.state.value.level : 1 : 1,
                     filter: data
                 }
             }

@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
     },
     grid: {
         margin: '10px 0',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        textAlign: 'center'
     },
     root: {
         maxWidth: '90vw',
@@ -78,7 +79,7 @@ const Page4 = (props) => {
                         </CardContent>
                         <CardActions style={{ justifyContent: 'center' }} disableSpacing>
                             <IconButton >
-                                <TwShare url={location} />
+                                <TwShare location={location} />
                             </IconButton>
                         </CardActions>
                     </Card>

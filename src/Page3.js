@@ -39,7 +39,7 @@ const Page3 = (props) => {
     const style = {
         map: {
             position: 'fixed',
-            top: '15vh',
+            top: '35vh',
             left: '10vw',
             // height: '90vw',
             width: '80%',
@@ -49,25 +49,26 @@ const Page3 = (props) => {
             'MsTransform': 'rotate(90deg)',
             transform: 'rotate(90deg)',
             // filter: 'drop-shadow(-5px 10px 0px rgba(0, 0, 0, .9))',
-            zIndex: '96'
+            zIndex: '96',
+            filter: 'brightness(80%)'
         },
         map2: {
             position: 'fixed',
-            top: '-15vh',
-            height: '80vw',
-            width: '5%',
+            top: '-10vh',
+            left: '30vw',
+            height: '60vw',
+            width: '20%',
             'WebkitTransform': 'rotate(90deg)',
             'MozTransform': 'rotate(90deg)',
             'OTransform': 'rotate(90deg)',
             'MsTransform': 'rotate(90deg)',
             transform: 'rotate(90deg)',
-            filter: 'drop-shadow(-5px 10px 0px rgba(0, 0, 0, .9))',
+            // filter: 'drop-shadow(-5px 10px 0px rgba(0, 0, 0, .9))',
             zIndex: '97'
         },
         arrow: {
-            bottom: '100px',
             left: '15vw',
-            top: 'unset',
+            top: '70vh',
             position: 'fixed',
             height: '20vw',
             'WebkitTransform': rotate,
@@ -83,7 +84,7 @@ const Page3 = (props) => {
 
     const goNext = async () => {
         const arrow = document.getElementById("arrow");
-        if (arrow !== null) arrow.style.bottom = '68vh';
+        if (arrow !== null) arrow.style.top = '26vh';
         if (arrow !== null) arrow.style.transitionDuration = '0.3s';
         setState(4);
     }
@@ -130,7 +131,7 @@ const Page3 = (props) => {
             && parseInt(String(event.accelerationIncludingGravity.z)) <= 2) {
             setState(1);
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.bottom = '100px';
+            if (arrow !== null) arrow.style.top = '70vh';
             if (arrow !== null) arrow.style.left = '15vw';
             if (arrow !== null) arrow.style.transitionDuration = '0.2s';
             setLog("OK");
@@ -143,11 +144,11 @@ const Page3 = (props) => {
             && parseInt(String(event.accelerationIncludingGravity.z)) <= 8) {
             setLog("OK");
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.bottom = '-10px';
+            if (arrow !== null) arrow.style.top = '80vh';
             setState(2);
         } else if (state === 2) {
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.bottom = String(-event.accelerationIncludingGravity.y / 3.00 * 100 + 80) + 'px';
+            if (arrow !== null) arrow.style.top = String(event.accelerationIncludingGravity.y / 3.00 * 10 + 70) + 'vh';
         } else {
             setLog("NO");
         }
@@ -161,7 +162,7 @@ const Page3 = (props) => {
                 navigator.vibrate(60);
             }
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.bottom = '68vh';
+            if (arrow !== null) arrow.style.top = '26vh';
             if (arrow !== null) arrow.style.transitionDuration = '0.3s';
             if (arrow !== null) arrow.style.left = String((((Number(arrow.style.transform.split('(')[1].split('d')[0]) - max.yMin) / (max.yMax - max.yMin)) - 0.5) * 35 + 15) + 'vw';
         } else {
@@ -233,7 +234,7 @@ const Page3 = (props) => {
     const ios_ver = () => {
         var ios_ua = navigator.userAgent;
         if (ios_ua.indexOf("iPhone") >= 0) {
-            console.log(ios_ua.match(/iPhone OS (\w+){1,3}/g));
+            // console.log(ios_ua.match(/iPhone OS (\w+){1,3}/g));
             var version = (RegExp.$1.replace(/_/g, '') + '00').slice(0, 3);
             return Number(version);
         } else {
@@ -259,6 +260,7 @@ const Page3 = (props) => {
                     if (permissionState === 'granted') {
                         window.addEventListener("devicemotion", getAcceleration, false)
                     }
+                    alert("ok");
                 }).catch(console.error);
         } else if (and_ver() !== -1 || ios_ver() !== -1) {
             window.addEventListener("devicemotion", getAcceleration, false);
@@ -300,29 +302,12 @@ const Page3 = (props) => {
                 :
                 <></>
             }
-            {/* <div>
-                <span>{String(and_ver())}</span>
-                <span>{String(ios_ver())}</span>
-            </div>
-            <div id="log">NO</div>
-            <div id="state">0</div>
-            <div>
-                <div id="x">0</div>
-                <div id="y">0</div>
-                <div id="z">0</div>
-            </div>
-            <div>
-                <div id="maxx">0</div>
-                <div id="maxy">0</div>
-                <div id="maxz">0</div>
-            </div>
-            <div>
-                <div id="alpha">0</div>
-                <div id="beta">0</div>
-                <div id="gamma">0</div>
-            </div> */}
-            <div style={{ overflow: 'hidden', height: '100vh', width: '100vw', top: 0, right: 0 }}>
+            <span style={{ position: 'fixed', left: '10vw', top: '5vh', height: '10vh', width: '80vw', backgroundColor: '#EEEEEE', filter: 'drop-shadow(-5px -1vh 0px rgba(0, 0, 0, .9))', zIndex: 96, overflow: 'hidden' }} >
                 <img src={map} style={style.map2} />
+            </span>
+            <span style={{ position: 'fixed', height: '14vh', width: '100vw', backgroundColor: '#D2B48C' }} >
+            </span>
+            <div style={{ overflow: 'hidden', height: '100vh', width: '100vw', top: 0, right: 0, textAlign: 'center', verticalAlign: 'middle', backgroundColor: '#DDDDDD' }}>
                 <img src={map} style={style.map} />
                 <img alt="" id="arrow" src={Arrow} style={style.arrow} />
             </div>

@@ -91,7 +91,7 @@ const Map = compose(
         />
       </CardMedia>
       <CardActions style={{ justifyContent: 'center' }} disableSpacing>
-        <IconButton href={`comgooglemaps://?daddr=${lat},${lng}`} >
+        <IconButton href={`https://www.google.com/maps/search/?api=1&query=${location}`} >
           <MapRoundedIcon />
         </IconButton>
       </CardActions>

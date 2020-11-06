@@ -8,15 +8,16 @@ import {
 } from 'react-share'
 
 const Tw_share = (props) => {
+  console.log(props)
   return (
     <div id="share_button">
-      {/* {props.location.state.url ? */}
-      <TwitterShareButton url={["https://jphacks.github.io/A_2014/"]} title={"ツルのひと押しアプリで旅の行き先が決まったよ! #JPHACK2020"}>
-        <TwitterIcon size={32} round />
-      </TwitterShareButton>
-      {/* :
+      {props.location ?
+        <TwitterShareButton url={["https://jphacks.github.io/A_2014/"]} title={"『ツルのひと押し』アプリで旅の行き先が決まったよ!\n\n「" + props.location + "」\n\n#ツルひと #JPHACKS2020\n"}>
+          <TwitterIcon size={32} round />
+        </TwitterShareButton>
+        :
         <></>
-      } */}
+      }
     </div>
   );
 }

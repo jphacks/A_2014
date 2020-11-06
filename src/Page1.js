@@ -32,7 +32,7 @@ const Page1 = (props) => {
     }
 
     return (
-        <span className="frame">
+        <span className="frame" >
             <Modal
                 style={{ position: 'fixed' }}
                 name={<IconButton ><HelpRoundedIIcon color="primary" /></IconButton>}

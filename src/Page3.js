@@ -68,7 +68,7 @@ const Page3 = (props) => {
         },
         arrow: {
             left: '35vw',
-            top: '80vh',
+            top: '70vh',
             position: 'fixed',
             height: '10vw',
             'WebkitTransform': rotate,
@@ -131,7 +131,7 @@ const Page3 = (props) => {
             && parseInt(String(event.accelerationIncludingGravity.z)) <= 2) {
             setState(1);
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.top = '80vh';
+            if (arrow !== null) arrow.style.top = '70vh';
             if (arrow !== null) arrow.style.left = '35vw';
             if (arrow !== null) arrow.style.transitionDuration = '0.2s';
             setLog("OK");
@@ -144,11 +144,11 @@ const Page3 = (props) => {
             && parseInt(String(event.accelerationIncludingGravity.z)) <= 8) {
             setLog("OK");
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.top = '90vh';
+            if (arrow !== null) arrow.style.top = '80vh';
             setState(2);
         } else if (state === 2) {
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.top = String(event.accelerationIncludingGravity.y / 3.00 * 10 + 80) + 'vh';
+            if (arrow !== null) arrow.style.top = String(event.accelerationIncludingGravity.y / 3.00 * 10 + 70) + 'vh';
         } else {
             setLog("NO");
         }

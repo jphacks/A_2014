@@ -38,17 +38,16 @@ const useStyles = makeStyles((theme) => ({
 const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 
 const Page4 = (props) => {
-    const [city, setCity] = useState("");
-    const [prefCode, setPrefCode] = useState(-1);
     const [location, setLocation] = useState("");
     const url = "https://opendata.resas-portal.go.jp/"
+    var count = 0;
     // add key
     var key = "";
 
     const classes = useStyles();
 
     useEffect(() => {
-        if (city === "" && prefCode === -1) getData(url, key);
+        if (location === "" && count == 0) getData(url, key);
     })
 
     const result = () => {
@@ -61,6 +60,7 @@ const Page4 = (props) => {
     }
 
     const getData = (url, key) => {
+        count = 1;
         // APIキー
         // エンドポイント
         url += "api/v1/cities";
@@ -75,8 +75,6 @@ const Page4 = (props) => {
             let data = this.response;
             console.log(data);
             var rand = Math.floor(Math.random() * data.result.length);//配列添え字乱数
-            setCity(data.result[rand].cityName)
-            setPrefCode(data.result[rand].prefCode)
             setLocation(plus(data.result[rand].cityName, data.result[rand].prefCode));
         }
         request.send();
@@ -151,7 +149,7 @@ const Page4 = (props) => {
                 ><ArrowBackRoundedIcon fontSize="large" style={{ color: "gray" }} /></Link>
             </IconButton>
             <Grid container className={classes.gridRoot}>
-                {city !== "" && prefCode !== -1 && location !== "" ? <>
+                {location !== "" ? <>
                     <Grid item xs={12} className={classes.grid} style={{ fontWeight: 600, fontSize: '1em' }}>
                         今日の目的地
                 </Grid>

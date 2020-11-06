@@ -1,49 +1,109 @@
-#ツルのひと押し
+# MEMO
+- 開発中はこの README
+- 開発後は README.old.mdを編集して公開
 
-[![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2020/09/JPHACKS2020_ogp.jpg)](https://youtu.be/U-3Y32_o9Qs)
+- ホームページは　https://jphacks.github.io/A_2014/
+- 初期は `npm install` -> `yarn start`
+- 入れたフレームワーク
+    - SCSS
+    - React.js
+    - gh-pages -> github をそのままサイトにできるやつ
+    - react-router-dom -> page遷移用
+- github初期設定
+    - `git config --global user.name "XXXX"`
+    - `git config --global user.email "XXXX@hogehoge.com"`
+    - `git remote set-url origin https://{username}@github.com/jphacks/A_2014.git`
+- 開発はmasterからブランチ切る
+    1. `git checkout -b ブランチの名前` (ブランチ切って移動)
+        
+        `git checkout ブランチの名前` (ブランチ移動だけ)
 
-## 製品概要
+    2. `git add ファイル名` (特定のファイル)
+        
+        `git add .` (全てのファイル)
+           
+    3. `git commit -m "コメント"`
+    4. `git push origin ブランチ`
 
-### 背景(製品開発のきっかけ、課題等）
+    `git merge ブランチ` (開発終わってマージ)
+- 開発中は `yarn start` で http://localhost:3000/A_2014 みながら開発 
+- 完成は `yarn predeploy` -> `gh-pages-clean` -> `yarn deploy` で反映
+- gh-pagesにcommitした内容が https://jphacks.github.io/A_2014/ に反映される
 
-一人旅で行き先を決めてない、友達同士で行き先はたくさん出したけど、行き先が複数あって決まらないことがある。そんなときに楽しく行き先を決めたい・決めてほしい。そこでダーツの旅を連想した。
+　　
+`git pull` で更新を頻繁にやる
 
-### 製品説明（具体的な製品の説明）
+gitコマンド参考　https://qiita.com/kohga/items/dccf135b0af395f69144
 
-旅先の難易度のモードを選んで、提案してほしい項目を選び、ダーツを投げると、旅先がランダムに提案されます。その結果は、地図で見れたり、SNS でシェアできます。
+---
 
-### 特長
+# Getting Started with Create React App
 
-####1.モード分け
-旅の玄人をメインターゲットとして、行き先のない旅のときに使ってもらうことを第一に想定しました。もちろん、ビギナーさんも使いやすいように旅先の難易度を調整できるモード分け機能をつけました。
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-####2.ダーツがスマホの角度に応じて動きます。
+## Available Scripts
 
-####3.提案項目を選べる。
+In the project directory, you can run:
 
-### 解決出来ること
+### `yarn start`
 
-旅先決めのお手伝い・盛り上げ。
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### 今後の展望
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-・提案項目を増やす。
-・ダーツ投げ UI・UX の改善。
-・エンタメ要素を増やす。
+### `yarn test`
 
-### 注力したこと（こだわり等）
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- スマホの向きとダーツの向きの連動
-- ダーツを投げたときのアニメーション
+### `yarn build`
 
-## 開発技術
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-### 活用した技術
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-#### API・データ
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-- フロントエンド（html,scss,js,react)
+### `yarn eject`
 
-#### フレームワーク・ライブラリ・モジュール
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-- materialUI
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `yarn build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

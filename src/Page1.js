@@ -7,7 +7,8 @@ import './App.scss';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { makeStyles } from '@material-ui/core/styles';
-import HelpIcon from '@material-ui/icons/Help';
+import HelpRoundedIIcon from '@material-ui/icons/Help';
+import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,17 +34,17 @@ const Page1 = (props) => {
     return (
         <span className="frame">
             <Modal
-                style={{ position: 'relative' }}
-                name={<HelpIcon />}
+                style={{ position: 'fixed' }}
+                name={<IconButton ><HelpRoundedIIcon color="primary" /></IconButton>}
                 introduction='はじめまして！僕は,つるの鶴野ヒトーシだよ。このアプリであなたの行き先を悩まずに決めちゃいましょう！まずは旅先の難易度を選んでね！'
             />
             {/*             <Img
                 alt='pic'
                 src='./assets/jap.jpg'
             /> */}
-            <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                <div style={{ position: 'absolute', top: '12vh', zIndex: 97, fontSize: 'xx-large' }}>ツルのひと押し</div>
-                <img src={logo} style={{ width: '100%', overflow: 'visible', marginBottom: 0, marginTop: '70px' }} />
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                <div style={{ position: 'absolute', width: '100%', textAlign: 'center', top: '20vh', zIndex: 97, fontSize: 'xx-large' }}>ツルのひと押し</div>
+                <img src={logo} style={{ width: '100%', marginTop: '10vh' }} />
                 <ButtonGroup
                     orientation="vertical"
                     aria-label="vertical contained primary button group"

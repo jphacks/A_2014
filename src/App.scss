@@ -17,6 +17,10 @@
   position: relative;
   height: 100%;
   width: 100%;
+  overflow: scroll;
+}
+
+.frame{
   overflow: hidden;
 }
 
@@ -28,10 +32,10 @@ html,body{
 *{
   margin: 0 auto;
   padding: 0 auto;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right:  0;
+  top:unset;
+  bottom: unset;
+  left: unset;
+  right:  unset;
   text-align: center;
   vertical-align: middle;
 }

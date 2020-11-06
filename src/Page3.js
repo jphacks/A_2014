@@ -31,7 +31,7 @@ const Page3 = (props) => {
 
     const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 
-    var max = { x: 0, y: 0, z: 1000, yMax: 110, yMin: 70, xMin: 0 }
+    var max = { x: 0, y: 0, z: 1000, yMax: 100, yMin: 80, xMin: 0 }
     var state = 0;
     var deg = 90
     var rotate = 'rotate(' + String(deg) + 'deg)';
@@ -39,9 +39,23 @@ const Page3 = (props) => {
     const style = {
         map: {
             position: 'fixed',
-            top: '-10vh',
-            height: '90vw',
-            width: '30vh',
+            top: '15vh',
+            left: '10vw',
+            // height: '90vw',
+            width: '80%',
+            'WebkitTransform': 'rotate(90deg)',
+            'MozTransform': 'rotate(90deg)',
+            'OTransform': 'rotate(90deg)',
+            'MsTransform': 'rotate(90deg)',
+            transform: 'rotate(90deg)',
+            // filter: 'drop-shadow(-5px 10px 0px rgba(0, 0, 0, .9))',
+            zIndex: '96'
+        },
+        map2: {
+            position: 'fixed',
+            top: '-15vh',
+            height: '80vw',
+            width: '5%',
             'WebkitTransform': 'rotate(90deg)',
             'MozTransform': 'rotate(90deg)',
             'OTransform': 'rotate(90deg)',
@@ -52,6 +66,7 @@ const Page3 = (props) => {
         },
         arrow: {
             bottom: '100px',
+            left: '15vw',
             top: 'unset',
             position: 'fixed',
             height: '20vw',
@@ -68,7 +83,7 @@ const Page3 = (props) => {
 
     const goNext = async () => {
         const arrow = document.getElementById("arrow");
-        if (arrow !== null) arrow.style.bottom = '50vh';
+        if (arrow !== null) arrow.style.bottom = '68vh';
         if (arrow !== null) arrow.style.transitionDuration = '0.3s';
         setState(4);
     }
@@ -116,7 +131,7 @@ const Page3 = (props) => {
             setState(1);
             const arrow = document.getElementById("arrow");
             if (arrow !== null) arrow.style.bottom = '100px';
-            if (arrow !== null) arrow.style.left = '0vw';
+            if (arrow !== null) arrow.style.left = '15vw';
             if (arrow !== null) arrow.style.transitionDuration = '0.2s';
             setLog("OK");
         } else {
@@ -143,12 +158,12 @@ const Page3 = (props) => {
             setState(3);
             setLog("OK");
             if (navigator.vibrate) {
-                navigator.vibrate(300);
+                navigator.vibrate(60);
             }
             const arrow = document.getElementById("arrow");
-            if (arrow !== null) arrow.style.bottom = '50vh';
+            if (arrow !== null) arrow.style.bottom = '68vh';
             if (arrow !== null) arrow.style.transitionDuration = '0.3s';
-            if (arrow !== null) arrow.style.left = String((((Number(arrow.style.transform.split('(')[1].split('d')[0]) - max.yMin) / (max.yMax - max.yMin)) - 0.5) * 35 + 0) + 'vw';
+            if (arrow !== null) arrow.style.left = String((((Number(arrow.style.transform.split('(')[1].split('d')[0]) - max.yMin) / (max.yMax - max.yMin)) - 0.5) * 35 + 15) + 'vw';
         } else {
             setLog("NO");
         }
@@ -307,6 +322,7 @@ const Page3 = (props) => {
                 <div id="gamma">0</div>
             </div> */}
             <div style={{ overflow: 'hidden', height: '100vh', width: '100vw', top: 0, right: 0 }}>
+                <img src={map} style={style.map2} />
                 <img src={map} style={style.map} />
                 <img alt="" id="arrow" src={Arrow} style={style.arrow} />
             </div>

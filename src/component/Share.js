@@ -3,22 +3,22 @@
 import React from 'react';
 import './Share.scss';
 import {
-    TwitterShareButton,
-    TwitterIcon
+  TwitterShareButton,
+  TwitterIcon
 } from 'react-share'
 
-class Tw_share extends React.Component{
-  render() {
-    return (
-      <div id="share_button">
-        <TwitterShareButton url={["ホームページURL"]} title={"行き先が決まったよ"}>
-          <TwitterIcon size={32} round />
-        </TwitterShareButton>
-      </div>
-    );
-  }
+const Tw_share = (props) => {
+  return (
+    <div id="share_button">
+      {/* {props.location.state.url ? */}
+      <TwitterShareButton url={["https://jphacks.github.io/A_2014/"]} title={"ツルのひと押しアプリで旅の行き先が決まったよ! #JPHACK2020"}>
+        <TwitterIcon size={32} round />
+      </TwitterShareButton>
+      {/* :
+        <></>
+      } */}
+    </div>
+  );
 }
 
 export default Tw_share;
-
-

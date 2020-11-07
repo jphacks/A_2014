@@ -35,30 +35,27 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
-
 const Page4 = (props) => {
     const [location, setLocation] = useState("");
 
     const url = "https://opendata.resas-portal.go.jp/"
     var count = 0;
     // add key
-    var key = "ZGUU4HOyL9KDETFUh8lX7lzxQDz9EAdB2W3CNSu0";
+    var key = "";
 
     const classes = useStyles();
 
     useEffect(() => {
         if (location === "" && count === 0) getData(url, key);
+        else count = 1;
+        console.log(location);
     })
 
-    const result = () => {
-        // props.location.state.value.level
-        // props.location.state.value.filter.road 
-        // props.location.state.value.filter.station 
-        // props.location.state.value.filter.city 
-        // props.location.state.value.dart
-        return "宮城県仙台市太白区萩が丘";
-    }
+    // props.location.state.value.level
+    // props.location.state.value.filter.road 
+    // props.location.state.value.filter.station 
+    // props.location.state.value.filter.city 
+    // props.location.state.value.dart
 
     const getData = (url, key) => {
         count = 1;
@@ -75,39 +72,32 @@ const Page4 = (props) => {
         request.onload = function () {
             let data;
             //やさしいモードだよ
-            if(props.location.state.value.level==0){
-                
+            if (props.location.state.value.level === 0) {
                 data = this.response;
-
-                let filteredData = data.result.filter(function(item, index){
-                    if (item.bigCityFlag == "2") return true;
-                  });
-                data = filteredData 
-            }else{
-            //おにモードだよ
+                let filteredData = data.result.filter(item => item.bigCityFlag === "2");
+                data = filteredData
+            } else {
+                //おにモードだよ
                 data = this.response;
                 data = data.result
             }
-            
+
             var rand;
             //北か南かだけの判断
-            if(props.location.state.value.dart<=50){
+            if (props.location.state.value.dart !== -1 && props.location.state.value.dart <= 50) {
                 rand = Math.floor(Math.random() * data.length);//配列添え字乱数
-                while(rand>=data.length*0.5){
+                while (rand >= data.length * 0.5) {
                     rand = Math.floor(Math.random() * data.length);//配列添え字乱数
-                };
-            
-            }else if(props.location.state.value.dart>50){
-            rand = Math.floor(Math.random() * data.length);//配列添え字乱数
-                while(rand<=data.length*0.5){
+                }
+            } else if (props.location.state.value.dart !== -1 && props.location.state.value.dart > 50) {
+                rand = Math.floor(Math.random() * data.length);//配列添え字乱数
+                while (rand <= data.length * 0.5) {
                     rand = Math.floor(Math.random() * data.length);//配列添え字乱数
-                };
-            }else{
+                }
+            } else {
                 rand = Math.floor(Math.random() * data.length);
-
-            };
+            }
             setLocation(plus(data[rand].cityName, data[rand].prefCode));
-         
         }
 
         request.send();
@@ -186,7 +176,7 @@ const Page4 = (props) => {
                 {location !== "" ? <>
                     <Grid item xs={12} className={classes.grid} style={{ fontWeight: 600, fontSize: '1em' }}>
                         今日の目的地
-                </Grid>
+                    </Grid>
                     <Grid item xs={12} className={classes.grid}>
                         <Card className={classes.root}>
                             <CardHeader
@@ -205,9 +195,7 @@ const Page4 = (props) => {
                             </Typography>
                             </CardContent>
                             <CardActions style={{ justifyContent: 'center' }} disableSpacing>
-                                <IconButton >
-                                    <TwShare location={location} />
-                                </IconButton>
+                                <TwShare location={location} />
                             </CardActions>
                         </Card>
                     </Grid>
@@ -219,7 +207,7 @@ const Page4 = (props) => {
                     : <></>
                 }
             </Grid>
-        </span>
+        </span >
     )
 }
 

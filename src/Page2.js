@@ -63,6 +63,7 @@ const Page2 = (props) => {
                                 checked={data.road}
                                 onChange={handleChange}
                                 name='road'
+                                disabled
                             />
                         }
                         label="道の駅"
@@ -73,6 +74,7 @@ const Page2 = (props) => {
                                 checked={data.station}
                                 onChange={handleChange}
                                 name='station'
+                                disabled
                             />
                         }
                         label="駅"
@@ -83,6 +85,8 @@ const Page2 = (props) => {
                                 checked={data.city}
                                 onChange={handleChange}
                                 name='city'
+                                checked
+                                disabled
                             />
                         }
                         label="まち"

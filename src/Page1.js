@@ -31,6 +31,27 @@ const Page1 = (props) => {
         });
     }
 
+    const ios_ver = () => {
+        var ios_ua = navigator.userAgent;
+        if (ios_ua.indexOf("iPhone") >= 0) {
+            // console.log(ios_ua.match(/iPhone OS (\w+){1,3}/g));
+            var version = (RegExp.$1.replace(/_/g, '') + '00').slice(0, 3);
+            return Number(version);
+        } else {
+            return -1;
+        }
+    }
+
+    const and_ver = () => {
+        var and_ua = navigator.userAgent;
+        if (and_ua.indexOf("Android") >= 0) {
+            var version = parseFloat(and_ua.slice(and_ua.indexOf("Android") + 8));
+            return Number(version);
+        } else {
+            return -1
+        }
+    }
+
     return (
         <span className="frame" >
             <Modal
@@ -43,8 +64,10 @@ const Page1 = (props) => {
                 src='./assets/jap.jpg'
             /> */}
             <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', justifyContent: 'center' }}>
+                {and_ver() === -1 && ios_ver() === -1 ? <span style={{ position: 'absolute', top: '10vh', width: '100%' }}>スマートフォンで開いてください</span> : <></>}
+                {ios_ver() !== -1 ? <span style={{ position: 'absolute', top: '13vh', width: '100%' }}>iOSに対応していない機能があります</span> : <></>}
                 <div style={{
-                    position: 'relative', width: '70%', fontWeight: 600,
+                    position: 'relative', width: '100%', fontWeight: 600,
                     filter: 'drop-shadow(5px 5px 0px rgba(255, 255, 255, 0.9))',
                     textAlign: 'center', top: '15vh', zIndex: 97,
                     fontSize: 'xx-large', color: 'gray', letterSpacing: '0.1em'

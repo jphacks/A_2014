@@ -1,6 +1,6 @@
 #ツルのひと押し
 
-[![IMAGE ALT TEXT HERE](https://jphacks.com/wp-content/uploads/2020/09/JPHACKS2020_ogp.jpg)](https://youtu.be/U-3Y32_o9Qs)
+[![IMAGE ALT TEXT HERE](./src/assets/IMG_2643.jpg)](https://youtu.be/8mPx5eUCm1I)
 
 ## 製品概要
 

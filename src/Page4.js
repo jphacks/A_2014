@@ -89,7 +89,23 @@ const Page4 = (props) => {
                 data = data.result
             }
             
-            var rand = Math.floor(Math.random() * data.length);//配列添え字乱数
+            var rand;
+            //北か南かだけの判断
+            if(props.location.state.value.dart<=50){
+                rand = Math.floor(Math.random() * data.length);//配列添え字乱数
+                while(rand>=data.length*0.5){
+                    rand = Math.floor(Math.random() * data.length);//配列添え字乱数
+                };
+            
+            }else if(props.location.state.value.dart>50){
+            rand = Math.floor(Math.random() * data.length);//配列添え字乱数
+                while(rand<=data.length*0.5){
+                    rand = Math.floor(Math.random() * data.length);//配列添え字乱数
+                };
+            }else{
+                rand = Math.floor(Math.random() * data.length);
+
+            };
             setLocation(plus(data[rand].cityName, data[rand].prefCode));
          
         }
@@ -185,7 +201,7 @@ const Page4 = (props) => {
                             />
                             <CardContent>
                                 <Typography className="area-text" variant="body2" color="textSecondary" component="p">
-                                    景色がきれいな{location}の町です
+                                    景色がきれいな{location}です。
                             </Typography>
                             </CardContent>
                             <CardActions style={{ justifyContent: 'center' }} disableSpacing>

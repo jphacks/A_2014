@@ -39,6 +39,7 @@ const sleep = msec => new Promise(resolve => setTimeout(resolve, msec));
 
 const Page4 = (props) => {
     const [location, setLocation] = useState("");
+
     const url = "https://opendata.resas-portal.go.jp/"
     var count = 0;
     // add key
@@ -72,12 +73,30 @@ const Page4 = (props) => {
         request.setRequestHeader("X-API-KEY", key);
 
         request.onload = function () {
-            let data = this.response;
-            var rand = Math.floor(Math.random() * data.result.length);//配列添え字乱数
-            setLocation(plus(data.result[rand].cityName, data.result[rand].prefCode));
+            let data;
+            //やさしいモードだよ
+            if(props.location.state.value.level==0){
+                
+                data = this.response;
+
+                let filteredData = data.result.filter(function(item, index){
+                    if (item.bigCityFlag == "2") return true;
+                  });
+                data = filteredData 
+            }else{
+            //おにモードだよ
+                data = this.response;
+                data = data.result
+            }
+            
+            var rand = Math.floor(Math.random() * data.length);//配列添え字乱数
+            setLocation(plus(data[rand].cityName, data[rand].prefCode));
+         
         }
+
         request.send();
     }
+
 
     const plus = (City, code) => {
         //prefをとりだすよ

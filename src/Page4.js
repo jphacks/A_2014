@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Grid from '@material-ui/core/Grid';
 import './App.scss';
 import TwShare from "./component/Share";
-import logo from "./assets/jap.jpg";
+import logo from "./assets/for_page4.png";
 import Map from "./component/Map"
 import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBack';
 import { makeStyles } from '@material-ui/core/styles';

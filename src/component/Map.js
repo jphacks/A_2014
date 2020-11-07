@@ -22,7 +22,7 @@ import MapRoundedIcon from '@material-ui/icons/Map';
 import IconButton from '@material-ui/core/IconButton';
 
 // add key
-const apiKey = "";
+const apiKey = "AIzaSyAt_9izqQ3y1jBMpfJBi57QzAoTPTWmdT4";
 
 const MapWithAMakredInfoWindow = compose(
   withScriptjs,

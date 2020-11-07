@@ -1,6 +1,5 @@
 #ツルのひと押し
-
-[![IMAGE ALT TEXT HERE](./src/assets/IMG_2643.jpg)](https://youtu.be/8mPx5eUCm1I)
+https://youtu.be/8mPx5eUCm1I
 
 ## 製品概要
 
